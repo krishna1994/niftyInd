@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply box-border;
+}
+
+body {
+  @apply bg-[#0a0e1a] text-[#e8eaf6] font-sans;
+}
+
+input, button, select, textarea {
+  @apply font-sans;
+}
+
+/* Trading terminal grid */
+.grid-line {
+  @apply border-[#1a2035];
+}
+
+/* Smooth animations */
+.animate-pulse-custom {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Candle chart styling */
+.recharts-default-tooltip {
+  @apply bg-[#0f1629] border border-[#1a2035] rounded shadow-lg;
+}
+
+.recharts-tooltip-label {
+  @apply text-[#00d4aa];
+}
+
+/* ── Suppress webpack-dev-server HMR error overlay ──────────────────────────
+   react-scripts 5.x injects an <iframe id="webpack-dev-server-client-overlay">
+   when the WebSocket HMR connection fails.  Hiding it here is safe: the app
+   renders normally and real errors are still visible in the browser console.  */
+#webpack-dev-server-client-overlay {
+  display: none !important;
+}
+
+/* Hide react-error-overlay iframe (HMR runtime noise).
+   The overlay iframe has no id/class but always uses z-index 2147483647. */
+body > iframe[style*="2147483647"] {
+  display: none !important;
+}
